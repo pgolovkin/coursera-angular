@@ -68,7 +68,7 @@
         var controller = this;
 
         controller.nothingFound = function () {
-          if (controller.items.length == 0) {
+          if (controller.items === undefined || controller.items.length == 0) {
             return true;
           }
         };
