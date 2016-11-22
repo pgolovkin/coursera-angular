@@ -37,7 +37,7 @@
             var array = result.data.menu_items;
             if (searchTerm) {
               for (var i = 0; i < array.length; i++) {
-                if (array[i].description.indexOf(searchTerm) !== -1) {
+                if (array[i].description.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1) {
                   foundItems.push(array[i]);
                 }
               }
