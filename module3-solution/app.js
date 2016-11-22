@@ -68,9 +68,10 @@
         var controller = this;
 
         controller.nothingFound = function () {
-          if (controller.items === undefined || controller.items.length == 0) {
-            return true;
+          if (controller.items === undefined) {
+            return false;
           }
+          return controller.items.length == 0;
         };
       }
 })();
