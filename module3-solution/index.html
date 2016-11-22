@@ -12,14 +12,16 @@
    <div class="container" ng-controller='NarrowItDownController as narrowDownController'>
     <h1>Narrow Down Your Chinese Menu Choice</h1>
 
-    <div class="form-group">
+    <div class="row">
+    <div>
       <input type="text" placeholder="search term" class="form-control" ng-model='narrowDownController.searchTerm'>
     </div>
-    <div class="form-group narrow-button">
-      <button class="btn btn-primary" ng-click='narrowDownController.getMatchedMenuItems(narrowDownController.searchTerm)'>Narrow It Down For Me!</button>
+    <div>
+      <button class="btn btn-lg btn-primary" ng-click='narrowDownController.getMatchedMenuItems(narrowDownController.searchTerm)'>Narrow It Down For Me!</button>
     </div>
 
-    <found-items items="narrowDownController.found"></found-items>
+    </div>
+    <found-items items="narrowDownController.found" on-remove="narrowDownController.onRemove(index)"></found-items>
   </div>
 
 </body>

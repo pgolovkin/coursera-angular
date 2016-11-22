@@ -5,7 +5,7 @@
         .controller('NarrowItDownController', NarrowItDownController)
         .service('MenuSearchService', MenuSearchService)
         .directive('foundItems', FoundItemsDirective)
-        .constant('ApiBasePath', 'http://davids-restaurant.herokuapp.com');
+        .constant('ApiBasePath', 'https://davids-restaurant.herokuapp.com');
 
       NarrowItDownController.$inject = ['MenuSearchService'];
       function NarrowItDownController(MenuSearchService) {
@@ -16,6 +16,10 @@
            promise.then(function (result) {
              menu.found = result;
            });
+         }
+
+         menu.onRemove = function(index) {
+           menu.found.splice(index, 1);
          }
       };
 
@@ -31,12 +35,13 @@
           }).then(function (result) {
             var foundItems = [];
             var array = result.data.menu_items;
-            for (var i = 0; i < array.length; i++) {
-              if (array[i].description.indexOf(searchTerm) !== -1) {
-                foundItems.push(array[i]);
+            if (searchTerm) {
+              for (var i = 0; i < array.length; i++) {
+                if (array[i].description.indexOf(searchTerm) !== -1) {
+                  foundItems.push(array[i]);
+                }
               }
             }
-            console.log(foundItems);
             return foundItems;
           })
         };
@@ -48,6 +53,7 @@
           templateUrl: 'foundItemList.html',
           scope: {
             items: "<items",
+            onRemove:"&"
           },
           controller: FoundListDirectiveController,
           controllerAs: 'list',
@@ -61,5 +67,10 @@
       function FoundListDirectiveController() {
         var controller = this;
 
+        controller.nothingFound = function () {
+          if (controller.items.length == 0) {
+            return true;
+          }
+        };
       }
 })();
