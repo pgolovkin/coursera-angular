@@ -1,0 +1,29 @@
+<div class = "row">
+  <table ng-if="!$ctrl.nothingFound()" class = "table table-striped">
+    <thead>
+      <td>id</td>
+      <td>name</td>
+      <td>description</td>
+      <td>large_portion_name</td>
+      <td>price_large</td>
+      <td>price_small</td>
+      <td>short_name</td>
+      <td>small_portion_name</td>
+      <td>remove</td>
+    </thead>
+    <tr ng-repeat="item in $ctrl.items">
+      <td>{{item.id}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.description}}</td>
+      <td>{{item.large_portion_name}}</td>
+      <td>{{item.price_large}}</td>
+      <td>{{item.price_small}}</td>
+      <td>{{item.short_name}}</td>
+      <td>{{item.small_portion_name}}</td>
+      <td><button class="btn btn-lg btn-danger" ng-click="$ctrl.remove($index);">Don't want this one!</button></td>
+    </tr>
+  </table>
+  <div class="row" style="color:red" ng-if="$ctrl.nothingFound()">
+    Nothing found
+  </div>
+</div>
