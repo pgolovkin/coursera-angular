@@ -3,29 +3,24 @@
 
   angular.module('Data', []);
   angular.module('Data')
-    .controller('DataController', DataController);
+    .controller('CategoriesDataController', CategoriesDataController)
+    .controller('ItemsDataController', ItemsDataController);
 
-    DataController.$inject= ['MenuDataService'];
-    function DataController(MenuDataService) {
+    CategoriesDataController.$inject= ['MenuDataService'];
+    function CategoriesDataController(MenuDataService) {
       var dataController = this;
       dataController.categories = [];
-      dataController.items = [];
 
-
-      dataController.loadCategories = function() {
-        console.log('getting items');
+      dataController.$onInit = function() {
         MenuDataService.getAllCategories().then(function(result) {
           dataController.categories = result;
         });
-        console.log(dataController.categories);
-      }
-
-      dataController.loadItems = function(categoryName) {
-        console.log('getting items in main controller');
-        MenuDataService.getItemsForCategory(categoryName).then(function(result) {
-          dataController.items = result;
-        });
-        console.log(dataController.items);
       }
     }
+
+    ItemsDataController.$inject = ['items']
+    function ItemsDataController(items) {
+      this.items= items;
+    }
+
 })();

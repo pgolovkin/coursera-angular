@@ -1,6 +1,8 @@
 <ol>
   <li ng-repeat="category in $ctrl.categories">
     {{category.name}}
-    <a ng-click="$ctrl.getItems(category.short_name)">show info<a>
+    <a ui-sref="items({categoryName: category.short_name})">show info<a>
+
+    <!-- <a ui-sref="$ctrl.getItems(category.short_name)">show info<a> -->
   </li>
 </ol>

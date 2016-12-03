@@ -14,7 +14,6 @@
           method: "GET",
           url: (ApiBasePath + "/categories.json")
         }).then(function(result) {
-          console.log(result.data);
           return result.data;
         });
       }
@@ -24,7 +23,7 @@
           method: "GET",
           url: (ApiBasePath + "/menu_items.json?category="+categoryShortName)
         }).then(function(result) {
-          console.log(result.data);
+          console.log(categoryShortName);
           return result.data;
         });
       }
