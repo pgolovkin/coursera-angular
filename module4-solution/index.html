@@ -11,8 +11,26 @@
     <script src="src/categories.component.js"></script>
   </head>
 <body ng-app='MenuApp'>
-  <ul ng-controller='DataController'>
-    <li ng-repeat='item in DataController.items'>{{item.name}}</li>
-  </ul>
+  <div>
+    <h1>Welcome to restaurant!</div>
+  </div>
+  <div ng-controller="DataController as data">
+    <h2 ng-click="data.loadCategories()">Our categories</h2>
+    <categories
+      categories="data.categories" on-get-items="data.loadItems(categoryName)"></categories>
+
+    <items items="data.items"></items>
+  </div>
+
+  <!-- <div ng-controller="DataController as data">
+    <a ng-click="data.getItems()">Categories</a>
+    <ul>
+      <li ng-repeat="item in data.items" ng-click="data.getItems2(item.short_name)">{{item.name}}</li>
+    </ul>
+    <ul>
+      <li ng-repeat="item2 in data.items2">{{item2.name}}</li>
+    </ul>
+  </div> -->
+
 </body>
 </html>

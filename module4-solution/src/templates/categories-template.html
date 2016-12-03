@@ -1,0 +1,6 @@
+<ol>
+  <li ng-repeat="category in $ctrl.categories">
+    {{category.name}}
+    <a ng-click="$ctrl.getItems(category.short_name)">show info<a>
+  </li>
+</ol>
