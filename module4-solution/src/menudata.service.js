@@ -24,7 +24,7 @@
           url: (ApiBasePath + "/menu_items.json?category="+categoryShortName)
         }).then(function(result) {
           console.log(categoryShortName);
-          return result.data;
+          return result.data.menu_items;
         });
       }
     }
