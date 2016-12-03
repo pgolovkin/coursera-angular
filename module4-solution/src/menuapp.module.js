@@ -16,18 +16,18 @@
       $stateProvider
         .state('home', {
           url: '/home',
-          templateUrl:'/src/templates/home-state-template.html'
+          templateUrl:'/templates/home-state-template.html'
         })
 
         .state('categories', {
           url: '/categories',
-          templateUrl:'/src/templates/categories-state-template.html',
+          templateUrl:'/templates/categories-state-template.html',
           controller: 'CategoriesDataController as categoriesData'
         })
 
         .state('items', {
           url: '/items/{categoryName}',
-          templateUrl:'/src/templates/items-state-template.html',
+          templateUrl:'/templates/items-state-template.html',
           controller: 'ItemsDataController as itemsData',
           resolve: {
             items: ['$stateParams', 'MenuDataService',
